@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="atosv2.config" path="/admin/module/atosv2/configure" methods="post">
+        <default key="_controller">AtosV2\Controller\ConfigureController::configure</default>
+    </route>
+
+    <route id="atosv2.download.log" path="/admin/module/atosv2/log">
+        <default key="_controller">AtosV2\Controller\ConfigureController::downloadLog</default>
+    </route>
+
+    <route id="atosv2.logo" path="atosv2/logo/{image}">
+        <default key="_controller">AtosV2\Controller\PaymentController::displayLogo</default>
+    </route>
+
+    <route id="atosv2.payment.manual_response" path="atosv2/manual-response" methods="post">
+        <default key="_controller">AtosV2\Controller\PaymentController::processManualResponse</default>
+    </route>
+
+    <route id="atosv2.payment.confirmation" path="atosv2/callback" methods="post">
+        <default key="_controller">AtosV2\Controller\PaymentController::processAtosV2Request</default>
+    </route>
+
+    <route id="atosv2.payment.cancel" path="atosv2/cancel/{orderId}">
+        <default key="_controller">AtosV2\Controller\PaymentController::processUserCancel</default>
+        <requirement key="orderId">\d+</requirement>
+    </route>
+</routes>
