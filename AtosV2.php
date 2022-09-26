@@ -157,7 +157,7 @@ class AtosV2 extends AbstractPaymentModule
 
         if ($estModeV2Simplifile) {
             $transactionId = $this->generateV1SimplifieTransactionID();
-            $paymentRequest->sets10TransactionId($this->generateV1SimplifieTransactionID());
+            $paymentRequest->sets10TransactionId($transactionId);
         } else {
             $transactionId = $this->generateTransactionID();
             $paymentRequest->setTransactionReference($transactionId);
